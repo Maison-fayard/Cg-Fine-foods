@@ -99,7 +99,7 @@ section{padding:8rem 5vw}
 .ff:hover img{transform:scale(1.03)}
 .fa{position:absolute;bottom:-1.5rem;right:-1.5rem;width:60%;height:60%;border:1px solid var(--r);pointer-events:none;z-index:-1}
 .cb2{background:#1C1C1C;padding:6rem 5vw;text-align:center;position:relative;overflow:hidden}
-.cb2::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120%;height:300%;background:radial-gradient(ellipse,rgba(255,255,255,.06) 0%,transparent 60%)}
+.cb2::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120%;height:300%;background:radial-gradient(ellipse,rgba(255,255,255,.06) 0%,transparent 60%);pointer-events:none;z-index:0}
 .cb2l{font-size:.63rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:rgba(250,249,247,.55);margin-bottom:1.2rem}
 .cb2t{font-family:var(--fd);font-size:clamp(2rem,5vw,4rem);font-weight:300;color:var(--w);line-height:1.15;max-width:700px;margin:0 auto 1.5rem}
 .cb2t em{font-style:italic}
@@ -365,6 +365,10 @@ nav.sc .lang-btn:hover{color:rgba(28,28,28,.65)}
 /* Description */
 .hd{color:rgba(255,255,255,.85)!important;text-shadow:0 1px 8px rgba(0,0,0,.4)}
 
+
+/* Fix cb2 interaction — content above pseudo overlay */
+.cb2l,.cb2t,.cb2s,.cb2 .bb,.cb2 .bp{position:relative;z-index:1}
+
 </style>
 </head>
 <body>
@@ -412,7 +416,7 @@ nav.sc .lang-btn:hover{color:rgba(28,28,28,.65)}
 <h1 class="ht" data-fr="Vos produits fran&ccedil;ais,<br><em>distribu&eacute;s partout</em><br>au Canada." data-en="Your French products,<br><em>distributed across</em><br>Canada.">Vos produits fran&ccedil;ais,<br><em>distribu&eacute;s partout</em><br>au Canada.</h1>
 <p class="hd" data-fr="CG Fine Foods International prend en charge l&rsquo;importation, la r&eacute;glementation, la logistique et la distribution de vos gammes alimentaires sur le march&eacute; canadien." data-en="CG Fine Foods International manages importation, regulatory compliance, logistics and distribution of your food products across the Canadian market.">CG Fine Foods International prend en charge l&rsquo;importation, la r&eacute;glementation, la logistique et la distribution de vos gammes alimentaires sur le march&eacute; canadien.</p>
 <div class="ha">
-<a href="/contact/" class="bp" onclick="window.location.href='/contact/';return false;" data-fr="Discutons de votre projet" data-en="Discuss your project">Discutons de votre projet</a>
+<a href="contact/" class="bp" data-fr="Discutons de votre projet" data-en="Discuss your project">Discutons de votre projet</a>
 <a href="#" class="bo" onclick="sp('services');return false;" data-fr="D&eacute;couvrir nos services" data-en="Discover our services">D&eacute;couvrir nos services</a>
 </div>
 </div>
@@ -505,7 +509,7 @@ nav.sc .lang-btn:hover{color:rgba(28,28,28,.65)}
 <p class="cb2l" data-fr="Votre prochain partenariat" data-en="Your next partnership">Votre prochain partenariat</p>
 <h2 class="cb2t" data-fr="Votre projet a besoin<br><em>d&rsquo;un partenaire canadien&nbsp;?</em>" data-en="Your project needs<br><em>a Canadian partner?</em>">Votre projet a besoin<br><em>d&rsquo;un partenaire canadien&nbsp;?</em></h2>
 <p class="cb2s" data-fr="D&eacute;crivez-nous vos produits et vos ambitions. On revient vers vous sous 48h." data-en="Tell us about your products and ambitions. We&rsquo;ll get back to you within 48 hours.">D&eacute;crivez-nous vos produits et vos ambitions. On revient vers vous sous 48h.</p>
-<a href="/contact/" class="bb" onclick="window.location.href='/contact/';return false;" data-fr="Prendre contact &rarr;" data-en="Get in touch &rarr;">Prendre contact &rarr;</a>
+<a href="contact/" class="bb" data-fr="Prendre contact &rarr;" data-en="Get in touch &rarr;">Prendre contact &rarr;</a>
 </section>
 </div>
 
@@ -542,11 +546,11 @@ nav.sc .lang-btn:hover{color:rgba(28,28,28,.65)}
 
 function sp(id) {
   var pages = {
-    'home':    '/',
-    'services':'/services/',
-    'fayard':  '/maison-fayard/',
-    'apropos': '/a-propos/',
-    'contact': '/contact/'
+    'home':    './',
+    'services':'services/',
+    'fayard':  'maison-fayard/',
+    'apropos': 'a-propos/',
+    'contact': 'contact/'
   };
   if (pages[id]) window.location.href = pages[id];
 }
